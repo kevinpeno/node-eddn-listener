@@ -3,6 +3,6 @@ services:
   web:
     build: .
     volumes:
-      - ./app:/app
+      - ./src:/app
     ports:
       - "3000:8080"

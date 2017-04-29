@@ -1,0 +1,22 @@
+{
+  "$schemaRef": "http://schemas.elite-markets.net/eddn/journal/1",
+  "header": {
+    "uploaderID": "Bill",
+    "softwareName": "My excellent app",
+    "softwareVersion": "0.0.1"
+  },
+  "message": {
+    "timestamp": "2017-04-27T05:37:53Z",
+    "event": "Docked",
+    "StationName": "Santarem Refinery",
+    "StationType": "Outpost",
+    "StarSystem": "LHS 2270",
+    "StationFaction": "Jet Galactic Organisation",
+    "StationGovernment": "$government_Corporate;",
+    "StationGovernment_Localised": "Corporate",
+    "StationAllegiance": "Federation",
+    "StationEconomy": "$economy_Refinery;",
+    "StationEconomy_Localised": "Refinery",
+    "DistFromStarLS": 44.340168
+  }
+}

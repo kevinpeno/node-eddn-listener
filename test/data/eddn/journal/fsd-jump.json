@@ -1,0 +1,81 @@
+{
+  "$schemaRef": "http://schemas.elite-markets.net/eddn/journal/1",
+  "header": {
+    "uploaderID": "Bill",
+    "softwareName": "My excellent app",
+    "softwareVersion": "0.0.1"
+  },
+  "message": {
+    "timestamp": "2017-04-27T05:42:35Z",
+    "event": "FSDJump",
+    "StarSystem": "LHS 2274",
+    "StarPos": [
+      8.219,
+      58.281,
+      -33.938
+    ],
+    "SystemAllegiance": "Federation",
+    "SystemEconomy": "$economy_Colony;",
+    "SystemEconomy_Localised": "Colony",
+    "SystemGovernment": "$government_Corporate;",
+    "SystemGovernment_Localised": "Corporate",
+    "SystemSecurity": "$SYSTEM_SECURITY_medium;",
+    "SystemSecurity_Localised": "Medium Security",
+    "JumpDist": 5.284,
+    "FuelUsed": 0.239148,
+    "FuelLevel": 31.760853,
+    "Factions": [
+      {
+        "Name": "Union of LHS 2274 Progressive Party",
+        "FactionState": "None",
+        "Government": "Democracy",
+        "Influence": 0.03996,
+        "Allegiance": "Independent"
+      },
+      {
+        "Name": "LHS 2270 One",
+        "FactionState": "War",
+        "Government": "Cooperative",
+        "Influence": 0.021978,
+        "Allegiance": "Independent"
+      },
+      {
+        "Name": "LHS 2274 Crimson United Holdings",
+        "FactionState": "Boom",
+        "Government": "Corporate",
+        "Influence": 0.596404,
+        "Allegiance": "Federation"
+      },
+      {
+        "Name": "Pirates of LHS 2274",
+        "FactionState": "CivilWar",
+        "Government": "Anarchy",
+        "Influence": 0.048951,
+        "Allegiance": "Independent"
+      },
+      {
+        "Name": "Marquis du LHS 2274",
+        "FactionState": "War",
+        "Government": "Feudal",
+        "Influence": 0.016983,
+        "Allegiance": "Alliance"
+      },
+      {
+        "Name": "LHS 2274 Power Network",
+        "FactionState": "CivilWar",
+        "Government": "Corporate",
+        "Influence": 0.178821,
+        "Allegiance": "Federation"
+      },
+      {
+        "Name": "LHS 2317 Inc",
+        "FactionState": "Boom",
+        "Government": "Corporate",
+        "Influence": 0.096903,
+        "Allegiance": "Independent"
+      }
+    ],
+    "SystemFaction": "LHS 2274 Crimson United Holdings",
+    "FactionState": "Boom"
+  }
+}
