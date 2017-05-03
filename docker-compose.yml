@@ -1,18 +1,7 @@
 version: "2"
 services:
-  web:
-    build:
-      context: .
-      dockerfile: Dockerfile.web
-    volumes:
-      - ./src:/web/src
-    ports:
-      - "3000:8080"
-    command: npm start
   worker:
-    build:
-      context: .
-      dockerfile: Dockerfile.eddn
+    build: .
     volumes:
       - ./src:/web/src
-    command: npm run start:worker
+    command: npm run start
