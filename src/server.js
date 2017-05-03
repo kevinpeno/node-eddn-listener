@@ -15,7 +15,6 @@ console.log(`Running on http://localhost: ${PORT}`)
 
 // EDDN listener
 const memcache = require("memory-cache")
-const zlib = require("zlib")
 const zmq = require("zeromq")
 const sock = zmq.socket("sub")
 const eddn = require("./libs/eddn")
@@ -26,37 +25,41 @@ sock.subscribe("")
 console.log("Worker connected to port 9500")
 
 function updateIfNeeded(a) {
-	const b = memcache.get(a.message.StarSystem)
+	return a.map((faction) => {
+		const old = memcache.get(faction.name)
+		const toSave = Object.assign({}, old, faction)
 
-	if (_.eq(a, b)) {
-		return false
-	}
-	else {
-		return !!memcache.put(a.message.StarSystem, a.message.Factions)
-	}
+		if (!_.isEqual(old, toSave)) {
+			return !!memcache.put(faction.name, toSave)
+		}
+		else {
+			return false
+		}
+	}).some(v => v === true)
 }
 
-sock.on("message", message => {
-	const topic = JSON.parse(zlib.inflateSync(message))
+function processMessage(message) {
+	return eddn.getMessage(message)
+		.then((topic) => {
+			const updated = updateIfNeeded(eddn.getFactionsFromLocation(topic))
+			const factions = topic.message.Factions.sort((a, b) => {
+				return b.Influence - a.Influence
+			})
+			const factionsText = factions.reduce((acc, faction) => {
+				const influencePct = Math.floor(faction.Influence * 100)
+				return acc + `${faction.Name}: ${influencePct}%\n`
+			}, "")
 
-	if (eddn.checkMessageIsJournal(topic) && eddn.checkMessageIsLocation(topic)) {
-		const updated = updateIfNeeded(topic)
-		const factions = topic.message.Factions.sort((a, b) => {
-			return b.Influence - a.Influence
-		})
-		const factionsText = factions.reduce((acc, faction) => {
-			const influencePct = Math.floor(faction.Influence * 100)
-			return acc + `${faction.Name}: ${influencePct}%\n`
-		}, "")
-
-		const logTxt = `${topic.message.event} event for "${topic.message.StarSystem}"
+			const logTxt = `${topic.message.event} event for "${topic.message.StarSystem}"
 Factions:
 
 ${factionsText}
 Updated: ${updated.toString()}
 
 `
-		memcache.put(topic.message.StarSystem, factions)
-		console.log(logTxt)
-	}
-})
+			console.log(logTxt)
+		})
+		.catch(() => {})
+}
+
+sock.on("message", processMessage)
