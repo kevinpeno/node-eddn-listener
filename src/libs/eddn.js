@@ -13,11 +13,11 @@ function checkMessageIsJournal(message) {
 		&& message["$schemaRef"] === eddnSchemaName
 }
 
-function checkMessageIsLocation(message) {
-	return !!message.message
-		&& (message.message.event === "Location" || message.message.event === "FSDJump")
-		&& !!message.message.Factions
-		&& message.message.Factions.length > 0
+function checkMessageIsLocation({message}) {
+	return !!message
+		&& (message.event === "Location" || message.event === "FSDJump")
+		&& !!message.Factions
+		&& message.Factions.length > 0
 }
 
 function getMessage(message) {
@@ -34,20 +34,20 @@ function getMessage(message) {
 		})
 }
 
-function getFactionsFromLocation(location) {
-	const stations = location.message.StationName ? [{
-		"name": location.message.StationName,
-		"type": location.message.StationType,
-		"system": location.message.StarSystem
+function getFactionsFromLocation({message}) {
+	const stations = message.StationName ? [{
+		"name": message.StationName,
+		"type": message.StationType,
+		"system": message.StarSystem
 	}] : []
 
-	return location.message.Factions.map((faction) => {
+	return message.Factions.map((faction) => {
 		return {
 			"name": faction.Name,
 			"government": faction.Government,
 			"allegiance": faction.Allegiance,
 			"systems": [{
-				"name": location.message.StarSystem,
+				"name": message.StarSystem,
 				"state": faction.FactionState,
 				"influence": faction.Influence
 			}],
