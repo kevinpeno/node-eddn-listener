@@ -6,6 +6,7 @@
   "main": "./src/server.js",
   "scripts": {
     "start": "node ./src/server.js",
+    "start:worker": "node ./src/worker.js",
     "init": "rimraf .validate.json && rimraf .jshintrc",
     "build": "echo \"no build system yet\"",
     "clean": "rimraf build",
