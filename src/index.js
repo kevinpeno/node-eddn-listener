@@ -28,6 +28,7 @@ function updateIfNeeded(a) {
 function processMessage(message) {
 	return eddn.getMessage(message)
 		.then((topic) => {
+			console.log(JSON.stringify(topic))
 			const updated = updateIfNeeded(eddn.getFactionsFromLocation(topic))
 			const factions = topic.message.Factions.sort((a, b) => {
 				return b.Influence - a.Influence
@@ -46,7 +47,11 @@ Updated: ${updated.toString()}
 `
 			console.log(logTxt)
 		})
-		.catch(() => {})
+		.catch((err) => {
+			if (err.message !== "invalid") {
+				console.log(err)
+			}
+		})
 }
 
 sock.on("message", processMessage)

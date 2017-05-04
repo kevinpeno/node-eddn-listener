@@ -1,11 +1,11 @@
 {
-  "name": "Union of LHS 2274 Progressive Party",
+  "name": "Democrats of Wolf 1241",
+  "allegiance": "Federation",
   "government": "Democracy",
-  "allegiance": "Independent",
   "systems": [{
-    "name": "LHS 2274",
-    "state": "None",
-    "influence": 0.03996
+    "influence": 0.105894,
+    "name": "Ebor",
+    "state": "Boom"
   }],
   "stations": []
 }

@@ -1,0 +1,24 @@
+{
+	"header": {
+		"softwareVersion": "7.0.3.0",
+		"gatewayTimestamp": "2017-05-04T00:10:54.167545Z",
+		"softwareName": "EDDiscovery",
+		"uploaderID": "mescua"
+	},
+	"$schemaRef": "http://schemas.elite-markets.net/eddn/journal/1",
+	"message": {
+		"StarSystem": "Ebor",
+		"SystemFaction": "Cobra Wing",
+		"timestamp": "2017-05-04T00:10:53Z",
+		"SystemSecurity": "$SYSTEM_SECURITY_medium;",
+		"SystemAllegiance": "Independent",
+		"SystemEconomy": "$economy_Industrial;",
+		"StarPos": [
+			-30.719,
+			-49.688,
+			-113.813
+		],
+		"event": "FSDJump",
+		"SystemGovernment": "$government_Democracy;"
+	}
+}

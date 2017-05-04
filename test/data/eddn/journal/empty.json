@@ -1,9 +1,0 @@
-{
-  "$schemaRef": "http://schemas.elite-markets.net/eddn/journal/1",
-  "header": {
-    "uploaderID": "Bill",
-    "softwareName": "My excellent app",
-    "softwareVersion": "0.0.1"
-  },
-  "message": {}
-}
